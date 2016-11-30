@@ -1,0 +1,39 @@
+\begin{tikzpicture}
+
+% Stars
+\foreach \a in {90, 162, 234, 306, 18} {
+    \coordinate (p1) at (\a:1);
+    \coordinate (p2) at (\a+72:1);
+    \coordinate (p3) at (\a+144:1);
+    \coordinate (p4) at (\a+216:1);
+    \coordinate (p5) at (\a+288:1);
+
+    \coordinate (t1) at (intersection of p1--p3 and p2--p4);
+    \coordinate (t2) at (intersection of p1--p3 and p2--p5);
+
+    \fill[color=black!30] ($(p2) + (4.5,0)$) -- ($(t1) + (4.5,0)$) -- ($(t2) + (4.5,0)$) -- cycle;
+}
+
+\fill[color=black!30] (90:1) -- (234:1) -- (18:1) -- (162:1) -- (306:1) -- cycle;
+
+\draw[very thick, postaction={on each segment={direct arrow}}] (90:1) -- (234:1) -- (18:1) -- (162:1) -- (306:1) -- cycle;
+\draw[very thick] ($(90:1) + (4.5,0)$) -- ($(234:1) + (4.5,0)$) -- ($(18:1) + (4.5,0)$) -- ($(162:1) + (4.5,0)$) -- ($(306:1) + (4.5,0)$) -- cycle;
+
+% Circles
+\fill[color=black!30] (-1.25, -1.75) circle (0.8);
+\fill[color=black!30, even odd rule] (1.25, -1.75) circle (0.8) (1.25, -1.75) circle (0.4);
+\fill[color=black!30, even odd rule] (4.5, -1.75) circle (0.8) (4.5, -1.75) circle (0.4);
+
+\draw[very thick, postaction={on each segment={direct arrow}}] (-1.25, -1.75) circle (0.8);
+\draw[very thick, postaction={on each segment={direct arrow}}] (-1.25, -1.75) circle (0.4);
+\draw[very thick, postaction={on each segment={direct arrow}}] (1.25, -1.75) circle (0.8);
+\draw[very thick, postaction={on each segment={reverse arrow}}] (1.25, -1.75) circle (0.4);
+\draw[very thick] (4.5, -1.75) circle (0.4);
+\draw[very thick] (4.5, -1.75) circle (0.8);
+
+% Caption
+\draw (0, -3) node[anchor=south] {nonzero};
+\draw (4.5, -3) node[anchor=south] {even-odd};
+
+\end{tikzpicture}
+
